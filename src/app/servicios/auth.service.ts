@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 // Agregamos las librerias de autenticacion de firebase
 import { AngularFireAuth} from '@angular/fire/auth';
+import { Router} from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private AFauth: AngularFireAuth) { }
+  constructor(private AFauth: AngularFireAuth,  
+              private router: Router) { }
 
 
   // Hacemos funcion de login dentro de una promesa para recibir un resolve o un rejected
@@ -19,7 +21,13 @@ export class AuthService {
         resolve(user);
       }).catch(err => rejected(err));
     });
+  }
+  
+    logout(){
+      this.AFauth.auth.signOut().then(auth => {
+        this.router.navigate(['/login']);
+      })
+    }
 
   
-  }
 }
