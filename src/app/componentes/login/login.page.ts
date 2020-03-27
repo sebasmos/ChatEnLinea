@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// importamos la clase qiue se exporta desde el servicio
-import { AuthService } from '../../servicios/auth.service';
+import { AuthService } from "../../servicios/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,21 +9,19 @@ import { AuthService } from '../../servicios/auth.service';
 })
 export class LoginPage implements OnInit {
 
-  // creamos variables de usuario
-  email:string;
-  password:string;
+  email: string;
+  password: string;
 
-  //inyectamos a nuestro constructor como auth
-  constructor(private authService:AuthService) { }
+  constructor(private authService: AuthService, public router: Router) { }
 
   ngOnInit() {
   }
 
-  // fun de login
-  onSubmitLogin(){
-
-    this.authService.login(this.email,this.password);
-    console.log(res)
+  onSubmitLogin()
+  {
+    this.authService.login(this.email, this.password).then( res =>{
+      this.router.navigate(['/home']);
+    }).catch(err => alert('los datos son incorrectos o no existe el usuario'))
   }
 
 }
