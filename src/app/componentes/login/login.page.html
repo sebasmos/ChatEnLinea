@@ -1,0 +1,24 @@
+<ion-header traslucent="true">
+  <ion-toolbar color="primary">
+    <ion-title class = "inicial_title" text-align="center">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <img src="assets/icon/chat.PNG" alt= "">
+<ion-item>
+  <ion-label position = "floating">Correo Electronico</ion-label>
+  <ion-input type = "text" name="email" [(ngModel)] = "email"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position = "floating">Contrasena</ion-label>
+  <ion-input type = "password" name="password" [(ngModel)] = "password"></ion-input>
+</ion-item>
+
+<ion-button expand="block" (click) = "onSubmitLogin()" >Entrar</ion-button>
+
+<h3>{{email}}</h3>
+<h3>{{password}}</h3>
+</ion-content>
+
+
