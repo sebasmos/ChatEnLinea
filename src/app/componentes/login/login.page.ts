@@ -21,10 +21,9 @@ export class LoginPage implements OnInit {
 
   // fun de login
   onSubmitLogin(){
-    console.log('Estas en la funcion')
 
     this.authService.login(this.email,this.password);
-
+    console.log(res)
   }
 
 }
